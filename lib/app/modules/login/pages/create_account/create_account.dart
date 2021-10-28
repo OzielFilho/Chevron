@@ -36,6 +36,28 @@ class _CreateAccountWithFirebasePageState extends ModularState<
                 const SizedBox(
                   height: 15,
                 ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        radius: 65,
+                      ),
+                      IconButton(
+                          onPressed: () async {},
+                          icon: Icon(
+                            Icons.camera_alt_outlined,
+                            size: 40,
+                            color: Theme.of(context).backgroundColor,
+                          ))
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
                 TextFormFieldCustom(
                   controllerText: controller.nameCreate,
                   title: 'Seu Nome',
@@ -62,9 +84,10 @@ class _CreateAccountWithFirebasePageState extends ModularState<
                   height: 15,
                 ),
                 MaterialButtomCustom(
-                    action: () {
+                    action: () async {
                       if (_key.currentState!.validate()) {
-                        controller.createAccountWithFirebase(context: context);
+                        await controller.createAccountWithFirebase(
+                            context: context);
                       }
                     },
                     text: 'Cadastrar',

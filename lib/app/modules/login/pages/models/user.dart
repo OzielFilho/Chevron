@@ -1,24 +1,21 @@
 import 'dart:convert';
 
-import 'package:barbershop/app/modules/login/pages/models/order.dart';
-
 class UserFirebase {
   final String name;
   final String email;
-
-  final List<Order> orders;
+  final String? photo;
 
   UserFirebase({
     required this.name,
     required this.email,
-    required this.orders,
+    this.photo,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'name': name,
       'email': email,
-      'orders': orders.map((x) => x.toMap()).toList(),
+      'photo': photo,
     };
   }
 
@@ -26,7 +23,7 @@ class UserFirebase {
     return UserFirebase(
       name: map['name'],
       email: map['email'],
-      orders: List<Order>.from(map['orders']?.map((x) => Order.fromMap(x))),
+      photo: map['photo'],
     );
   }
 

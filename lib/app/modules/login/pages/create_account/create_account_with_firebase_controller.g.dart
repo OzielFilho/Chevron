@@ -58,6 +58,17 @@ mixin _$CreateAccountWithFirebaseController
     });
   }
 
+  final _$createAccountInDataBaseAsyncAction = AsyncAction(
+      '_CreateAccountWithFirebaseControllerBase.createAccountInDataBase');
+
+  @override
+  Future<void> createAccountInDataBase(
+      {BuildContext? context, UserFirebase? userFirebase, String? uid}) {
+    return _$createAccountInDataBaseAsyncAction.run(() => super
+        .createAccountInDataBase(
+            context: context, userFirebase: userFirebase, uid: uid));
+  }
+
   final _$createAccountWithFirebaseAsyncAction = AsyncAction(
       '_CreateAccountWithFirebaseControllerBase.createAccountWithFirebase');
 
