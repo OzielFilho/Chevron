@@ -12,6 +12,9 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
           backgroundColor: const Color(0xffFFFAEE),
           primaryColor: const Color(0xff883B35),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xff883B35),
+          ),
           scaffoldBackgroundColor: const Color(0xffFFFAEE),
           textTheme: const TextTheme(
             bodyText1: TextStyle(

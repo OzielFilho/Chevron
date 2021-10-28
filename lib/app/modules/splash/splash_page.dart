@@ -26,7 +26,10 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset('assets/logo.png'),
+        child: Image.asset(
+          'assets/chevron_splash.gif',
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }

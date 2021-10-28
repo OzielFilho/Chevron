@@ -18,6 +18,12 @@ class _CreateAccountWithFirebasePageState extends ModularState<
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Criar Conta'),
+        leading: IconButton(
+            onPressed: () => Modular.to.pop(),
+            icon: const Icon(Icons.arrow_back_ios_new_outlined)),
+      ),
       body: Form(
         key: _key,
         child: SafeArea(

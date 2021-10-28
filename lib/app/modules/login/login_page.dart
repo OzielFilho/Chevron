@@ -17,63 +17,72 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.contain,
-              image: AssetImage(
-                'assets/logo.png',
-              ),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Form(
-              key: _key,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Insira seus dados'),
-                  const SizedBox(
-                    height: 10,
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Form(
+            key: _key,
+            child: LayoutBuilder(builder:
+                (BuildContext context, BoxConstraints viewportConstraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: viewportConstraints.maxHeight,
                   ),
-                  TextFormFieldCustom(
-                      controllerText: controller.controllerEmail,
-                      title: 'Email',
-                      icon: Icons.email_outlined),
-                  const SizedBox(
-                    height: 10,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 420,
+                        width: 420,
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage('assets/logo.png'))),
+                      ),
+                      const Text('Insira seus dados'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormFieldCustom(
+                          controllerText: controller.controllerEmail,
+                          title: 'Email',
+                          icon: Icons.email_outlined),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormFieldCustom(
+                        controllerText: controller.controllerPassword,
+                        title: 'Senha',
+                        obscureText: true,
+                        icon: Icons.lock_outline_rounded,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      MaterialButtomCustom(
+                        alignment: Alignment.center,
+                        action: () {
+                          if (_key.currentState!.validate()) {
+                            controller.loginFirebase(context);
+                          }
+                        },
+                        text: 'Fazer o Login',
+                      ),
+                      TextButtomCustom(
+                        alignment: Alignment.center,
+                        title: 'Criar uma conta!',
+                        action: () => Modular.to.pushNamed('create'),
+                      )
+                    ],
                   ),
-                  TextFormFieldCustom(
-                    controllerText: controller.controllerPassword,
-                    title: 'Senha',
-                    obscureText: true,
-                    icon: Icons.lock_outline_rounded,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  MaterialButtomCustom(
-                    alignment: Alignment.center,
-                    action: () {
-                      if (_key.currentState!.validate()) {
-                        controller.loginFirebase(context);
-                      }
-                    },
-                    text: 'Fazer o Login',
-                  ),
-                  TextButtomCustom(
-                    alignment: Alignment.center,
-                    title: 'Criar uma conta!',
-                    action: () => Modular.to.pushNamed('create'),
-                  )
-                ],
-              ),
-            ),
+                ),
+              );
+            }),
           ),
         ),
       ),

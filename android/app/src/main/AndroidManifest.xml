@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lums.barbershop">
    <application
-        android:label="barbershop"
+        android:label="Chevron"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
