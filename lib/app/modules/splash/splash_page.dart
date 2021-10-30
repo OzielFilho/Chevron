@@ -13,7 +13,7 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
-      if (await controller.isUserLogged()) {
+      if (controller.isUserLogged()) {
         return Modular.to.pushReplacementNamed('/home/');
       } else {
         return Modular.to.pushReplacementNamed('/login/');

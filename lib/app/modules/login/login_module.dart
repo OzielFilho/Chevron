@@ -1,7 +1,7 @@
 import 'package:barbershop/app/modules/home/home_module.dart';
 import 'package:barbershop/app/modules/login/login_controller.dart';
 import 'package:barbershop/app/modules/login/login_page.dart';
-import 'package:barbershop/app/modules/login/pages/create_account/create_account.dart';
+import 'package:barbershop/app/modules/login/pages/create_account/create_account_with_firebase_page.dart';
 import 'package:barbershop/app/modules/login/pages/create_account/create_account_with_firebase_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

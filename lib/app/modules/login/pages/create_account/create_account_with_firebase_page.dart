@@ -15,13 +15,14 @@ class CreateAccountWithFirebasePage extends StatefulWidget {
 class _CreateAccountWithFirebasePageState extends ModularState<
     CreateAccountWithFirebasePage, CreateAccountWithFirebaseController> {
   final _key = GlobalKey<FormState>();
+  final _passwordConfirm = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Criar Conta'),
         leading: IconButton(
-            onPressed: () => Modular.to.pop(),
+            onPressed: () => Modular.to.pop,
             icon: const Icon(Icons.arrow_back_ios_new_outlined)),
       ),
       body: Form(
@@ -46,7 +47,10 @@ class _CreateAccountWithFirebasePageState extends ModularState<
                         radius: 65,
                       ),
                       IconButton(
-                          onPressed: () async {},
+                          onPressed: () async => await controller
+                              .getImageFile(isCam: true)
+                              .then((value) =>
+                                  controller.insertImageinStorageFirebase),
                           icon: Icon(
                             Icons.camera_alt_outlined,
                             size: 40,
@@ -83,11 +87,23 @@ class _CreateAccountWithFirebasePageState extends ModularState<
                 const SizedBox(
                   height: 15,
                 ),
+                TextFormFieldCustom(
+                  controllerText: _passwordConfirm,
+                  title: 'Confirme a Senha',
+                  obscureText: true,
+                  icon: Icons.lock_outline_rounded,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
                 MaterialButtomCustom(
                     action: () async {
                       if (_key.currentState!.validate()) {
-                        await controller.createAccountWithFirebase(
-                            context: context);
+                        if (_passwordConfirm.text ==
+                            controller.passwordCreate.text) {
+                          await controller.createAccountWithFirebase(
+                              context: context);
+                        }
                       }
                     },
                     text: 'Cadastrar',

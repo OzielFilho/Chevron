@@ -58,6 +58,24 @@ mixin _$CreateAccountWithFirebaseController
     });
   }
 
+  final _$getImageFileAsyncAction =
+      AsyncAction('_CreateAccountWithFirebaseControllerBase.getImageFile');
+
+  @override
+  Future<File> getImageFile({required bool isCam}) {
+    return _$getImageFileAsyncAction
+        .run(() => super.getImageFile(isCam: isCam));
+  }
+
+  final _$insertImageinStorageFirebaseAsyncAction = AsyncAction(
+      '_CreateAccountWithFirebaseControllerBase.insertImageinStorageFirebase');
+
+  @override
+  Future<void> insertImageinStorageFirebase({File? file}) {
+    return _$insertImageinStorageFirebaseAsyncAction
+        .run(() => super.insertImageinStorageFirebase(file: file));
+  }
+
   final _$createAccountInDataBaseAsyncAction = AsyncAction(
       '_CreateAccountWithFirebaseControllerBase.createAccountInDataBase');
 
