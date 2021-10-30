@@ -27,6 +27,13 @@ class TextFormFieldCustom extends StatelessWidget {
             return 'A Senha não pode ser menor que 6 caracteres';
           }
         }
+        if (title == 'Email') {
+          if (!RegExp(
+                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              .hasMatch(value)) {
+            return 'Digite um email válido';
+          }
+        }
       },
       controller: controllerText,
       keyboardType: TextInputType.text,

@@ -25,6 +25,9 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
   @observable
   TextEditingController nameCreate = TextEditingController();
 
+  @observable
+  File? imageUser;
+
   @action
   Future<File> getImageFile({required bool isCam}) async {
     return await ImagePicker()
@@ -37,11 +40,7 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
   @action
   Future<void> insertImageinStorageFirebase({File? file}) async {
     String? uid = FirebaseAuth.instance.currentUser!.uid;
-    await FirebaseStorage.instance
-        .ref('users')
-        .child(uid)
-        .writeToFile(file!)
-        .then((p0) => print(p0.ref.name));
+    await FirebaseStorage.instance.ref('users').child(uid).writeToFile(file!);
   }
 
   @action

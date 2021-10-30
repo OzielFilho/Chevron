@@ -1,4 +1,5 @@
 import 'package:barbershop/app/modules/login/pages/create_account/create_account_with_firebase_controller.dart';
+import 'package:barbershop/app/shared/utils/functions/snack_bar/snack_bar_custom.dart';
 import 'package:barbershop/app/shared/utils/widgets/buttons/material_buttom_custom.dart';
 import 'package:barbershop/app/shared/utils/widgets/textfield/textformfield_custom.dart';
 import 'package:flutter/material.dart';
@@ -34,31 +35,6 @@ class _CreateAccountWithFirebasePageState extends ModularState<
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Insira os dados para cadastrar seu usuário'),
-                const SizedBox(
-                  height: 15,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Theme.of(context).primaryColor,
-                        radius: 65,
-                      ),
-                      IconButton(
-                          onPressed: () async => await controller
-                              .getImageFile(isCam: true)
-                              .then((value) =>
-                                  controller.insertImageinStorageFirebase),
-                          icon: Icon(
-                            Icons.camera_alt_outlined,
-                            size: 40,
-                            color: Theme.of(context).backgroundColor,
-                          ))
-                    ],
-                  ),
-                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -98,13 +74,7 @@ class _CreateAccountWithFirebasePageState extends ModularState<
                 ),
                 MaterialButtomCustom(
                     action: () async {
-                      if (_key.currentState!.validate()) {
-                        if (_passwordConfirm.text ==
-                            controller.passwordCreate.text) {
-                          await controller.createAccountWithFirebase(
-                              context: context);
-                        }
-                      }
+                      await createUser(context);
                     },
                     text: 'Cadastrar',
                     alignment: Alignment.center),
@@ -114,5 +84,16 @@ class _CreateAccountWithFirebasePageState extends ModularState<
         ),
       ),
     );
+  }
+
+  Future<void> createUser(BuildContext context) async {
+    if (_key.currentState!.validate()) {
+      if (_passwordConfirm.text == controller.passwordCreate.text) {
+        await controller.createAccountWithFirebase(context: context);
+      } else {
+        showSnackBar(
+            context: context, action: null, body: 'As senhas não coincidem');
+      }
+    }
   }
 }
