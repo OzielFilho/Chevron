@@ -58,6 +58,22 @@ mixin _$CreateAccountWithFirebaseController
     });
   }
 
+  final _$imageUserAtom =
+      Atom(name: '_CreateAccountWithFirebaseControllerBase.imageUser');
+
+  @override
+  File? get imageUser {
+    _$imageUserAtom.reportRead();
+    return super.imageUser;
+  }
+
+  @override
+  set imageUser(File? value) {
+    _$imageUserAtom.reportWrite(value, super.imageUser, () {
+      super.imageUser = value;
+    });
+  }
+
   final _$getImageFileAsyncAction =
       AsyncAction('_CreateAccountWithFirebaseControllerBase.getImageFile');
 
@@ -101,7 +117,8 @@ mixin _$CreateAccountWithFirebaseController
     return '''
 emailCreate: ${emailCreate},
 passwordCreate: ${passwordCreate},
-nameCreate: ${nameCreate}
+nameCreate: ${nameCreate},
+imageUser: ${imageUser}
     ''';
   }
 }

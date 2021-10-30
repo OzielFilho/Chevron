@@ -46,16 +46,14 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
   @action
   Future<void> createAccountInDataBase(
       {BuildContext? context, UserFirebase? userFirebase, String? uid}) async {
-    showLoading(context: context!);
     try {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(uid)
           .set(userFirebase!.toMap());
     } on FirebaseException catch (e) {
-      Modular.to.pop();
       showErrorMessage(
-          context: context,
+          context: context!,
           title: 'Error ao criar o usuário',
           message: e.message!);
     }
@@ -63,6 +61,7 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
 
   @action
   createAccountWithFirebase({BuildContext? context}) async {
+    int count = 0;
     showLoading(context: context!);
     try {
       await FirebaseAuth.instance
@@ -79,19 +78,22 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
                 context: context,
                 uid: value.user!.uid,
                 userFirebase: userCreate)
-            .whenComplete(() => showSnackBar(
-                context: context,
-                action: null,
-                body: 'Usuário Criado! Faça o Login'));
+            .whenComplete(() {
+          Navigator.of(context).popUntil((_) => count++ >= 2);
+          return showSnackBar(
+              context: context,
+              action: null,
+              body: 'Usuário Criado! Faça o Login');
+        });
       });
     } on FirebaseAuthException catch (e) {
-      Modular.to.pop();
+      Navigator.of(context).popUntil((_) => count++ >= 1);
       showErrorMessage(
           context: context,
           title: 'Error ao criar o usuário',
           message: e.message!);
     } catch (e) {
-      Modular.to.pop();
+      Navigator.of(context).popUntil((_) => count++ >= 1);
       showErrorMessage(
           context: context,
           title: 'Error ao criar o usuário',

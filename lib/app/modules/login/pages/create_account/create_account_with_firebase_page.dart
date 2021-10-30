@@ -23,7 +23,7 @@ class _CreateAccountWithFirebasePageState extends ModularState<
       appBar: AppBar(
         title: const Text('Criar Conta'),
         leading: IconButton(
-            onPressed: () => Modular.to.pop,
+            onPressed: () => Modular.to.pop(context),
             icon: const Icon(Icons.arrow_back_ios_new_outlined)),
       ),
       body: Form(
@@ -31,54 +31,54 @@ class _CreateAccountWithFirebasePageState extends ModularState<
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Insira os dados para cadastrar seu usuário'),
-                const SizedBox(
-                  height: 15,
-                ),
-                TextFormFieldCustom(
-                  controllerText: controller.nameCreate,
-                  title: 'Seu Nome',
-                  icon: Icons.person_outline_outlined,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                TextFormFieldCustom(
-                  controllerText: controller.emailCreate,
-                  title: 'Email',
-                  icon: Icons.email_outlined,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                TextFormFieldCustom(
-                  controllerText: controller.passwordCreate,
-                  title: 'Senha',
-                  obscureText: true,
-                  icon: Icons.lock_outline_rounded,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                TextFormFieldCustom(
-                  controllerText: _passwordConfirm,
-                  title: 'Confirme a Senha',
-                  obscureText: true,
-                  icon: Icons.lock_outline_rounded,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                MaterialButtomCustom(
-                    action: () async {
-                      await createUser(context);
-                    },
-                    text: 'Cadastrar',
-                    alignment: Alignment.center),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Insira os dados para cadastrar seu usuário'),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextFormFieldCustom(
+                    controllerText: controller.nameCreate,
+                    title: 'Seu Nome',
+                    icon: Icons.person_outline_outlined,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextFormFieldCustom(
+                    controllerText: controller.emailCreate,
+                    title: 'Email',
+                    icon: Icons.email_outlined,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextFormFieldCustom(
+                    controllerText: controller.passwordCreate,
+                    title: 'Senha',
+                    obscureText: true,
+                    icon: Icons.lock_outline_rounded,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextFormFieldCustom(
+                    controllerText: _passwordConfirm,
+                    title: 'Confirme a Senha',
+                    obscureText: true,
+                    icon: Icons.lock_outline_rounded,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  MaterialButtomCustom(
+                      action: () async => await createUser(context),
+                      text: 'Cadastrar',
+                      alignment: Alignment.center),
+                ],
+              ),
             ),
           ),
         ),
