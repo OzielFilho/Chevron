@@ -23,7 +23,7 @@ class UserFirebase {
     return UserFirebase(
       name: map['name'],
       email: map['email'],
-      photo: map['photo'],
+      photo: map['photo'] ?? '',
     );
   }
 
