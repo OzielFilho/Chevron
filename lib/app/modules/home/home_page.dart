@@ -1,5 +1,5 @@
-import 'package:barbershop/app/shared/utils/widgets/buttons/material_buttom_custom.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:barbershop/app/modules/home/home_controller.dart';
+import 'package:barbershop/app/modules/home/initial_page/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -10,21 +10,11 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  logout() async {
-    FirebaseAuth.instance
-        .signOut()
-        .whenComplete(() => Modular.to.pushReplacementNamed('/login'));
-  }
-
+class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: MaterialButtomCustom(
-        action: logout,
-        text: 'Sair',
-        alignment: Alignment.center,
-      ),
+    return const Scaffold(
+      body: InitialPage(),
     );
   }
 }
