@@ -1,5 +1,5 @@
-import 'package:barbershop/app/modules/home/initial_page/initial_controller.dart';
-import 'package:barbershop/app/modules/home/initial_page/widgets/barbersList/barbers_list_widget.dart';
+import 'package:barbershop/app/modules/home/pages/initial_page/initial_controller.dart';
+import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barbersList/barbers_list_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

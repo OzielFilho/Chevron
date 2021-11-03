@@ -66,9 +66,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       ),
                       MaterialButtomCustom(
                         alignment: Alignment.center,
-                        action: () {
+                        action: () async {
                           if (_key.currentState!.validate()) {
-                            controller.loginFirebase(context);
+                            await controller.loginFirebase(context);
                           }
                         },
                         text: 'Fazer o Login',

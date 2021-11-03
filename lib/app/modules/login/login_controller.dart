@@ -16,7 +16,7 @@ abstract class _LoginControllerBase with Store {
   TextEditingController? controllerPassword = TextEditingController();
 
   @action
-  loginFirebase(BuildContext context) async {
+  Future<void> loginFirebase(BuildContext context) async {
     showLoading(context: context);
     try {
       await FirebaseAuth.instance
@@ -24,10 +24,21 @@ abstract class _LoginControllerBase with Store {
               email: controllerEmail!.text, password: controllerPassword!.text)
           .then((value) {
         Modular.to.pop(context);
-      }).whenComplete(() => Modular.to.pushReplacementNamed('/home/'));
+        if (value.user != null) {
+          Modular.to.pushReplacementNamed('/home/');
+        } else {
+          showErrorMessage(
+              context: context,
+              message: 'Usuário não encontrado!',
+              title: 'Error');
+        }
+      });
     } on FirebaseAuthException catch (e) {
       Modular.to.pop(context);
-      showErrorMessage(context: context, message: 'Error', title: e.message!);
+      showErrorMessage(context: context, message: e.message!, title: 'Erro');
+    } catch (e) {
+      Modular.to.pop(context);
+      showErrorMessage(context: context, message: 'Error', title: 'Error');
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
-import 'package:barbershop/app/modules/home/initial_page/initial_controller.dart';
-import 'package:barbershop/app/modules/home/initial_page/initial_page.dart';
+import 'package:barbershop/app/modules/home/pages/initial_page/initial_controller.dart';
+import 'package:barbershop/app/modules/home/pages/initial_page/initial_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'home_page.dart';
