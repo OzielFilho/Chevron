@@ -45,7 +45,7 @@ mixin _$LoginController on _LoginControllerBase, Store {
       AsyncAction('_LoginControllerBase.loginFirebase');
 
   @override
-  Future<void> loginFirebase(BuildContext context) {
+  Future loginFirebase(BuildContext context) {
     return _$loginFirebaseAsyncAction.run(() => super.loginFirebase(context));
   }
 

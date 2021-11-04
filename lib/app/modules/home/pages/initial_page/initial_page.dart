@@ -1,8 +1,8 @@
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_controller.dart';
-import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barbersList/barbers_list_widget.dart';
-
+import 'package:barbershop/app/modules/home/pages/initial_page/widgets/body/body_widget.dart';
+import 'package:barbershop/app/modules/home/pages/initial_page/widgets/header/header_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class InitialPage extends StatefulWidget {
@@ -13,13 +13,9 @@ class InitialPage extends StatefulWidget {
 }
 
 class _InitialPageState extends ModularState<InitialPage, InitialController> {
-  initPage() async {
-    await controller.getBarbersStoreinFirestore();
-  }
-
   @override
   void initState() {
-    initPage();
+    controller.initPage();
     super.initState();
   }
 
@@ -32,19 +28,38 @@ class _InitialPageState extends ModularState<InitialPage, InitialController> {
         controller: _scrollController,
         child: ConstrainedBox(
           constraints: constraints,
-          child: Observer(
-            builder: (_) => SafeArea(
-              child: Column(
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Barbearias: '),
-                  controller.stores != null
-                      ? BarberListWidget(
-                          scrollController: _scrollController,
-                        )
-                      : Container()
+                  const HeaderWidget(),
+                  BodyWidget(scrollController: _scrollController)
                 ],
               ),
-            ),
+              ClipPath(
+                clipper: OvalTopBorderClipper(),
+                child: Container(
+                  height: 60,
+                  color: Theme.of(context).primaryColor,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Icon(
+                        Icons.home_outlined,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.list_rounded,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
         ),
       ),

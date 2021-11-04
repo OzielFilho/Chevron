@@ -14,6 +14,16 @@ class ThemeApp {
       ),
       scaffoldBackgroundColor: const Color(0xffFFFAEE),
       textTheme: const TextTheme(
+        headline2: TextStyle(
+          fontSize: 18,
+          color: Colors.white,
+          fontWeight: FontWeight.w500,
+        ),
+        headline3: TextStyle(
+          fontSize: 12,
+          color: Color(0xff883B35),
+          fontWeight: FontWeight.w400,
+        ),
         bodyText1: TextStyle(
             fontSize: 15,
             color: Color(0xff883B35),

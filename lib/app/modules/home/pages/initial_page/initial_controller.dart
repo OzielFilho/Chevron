@@ -10,6 +10,11 @@ abstract class _InitialControllerBase with Store {
   Stores? stores;
 
   @action
+  initPage() {
+    getBarbersStoreinFirestore();
+  }
+
+  @action
   Future<void> getBarbersStoreinFirestore() async {
     final DocumentReference document =
         FirebaseFirestore.instance.collection('stores').doc('barbers');

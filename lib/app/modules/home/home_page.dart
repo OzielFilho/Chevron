@@ -1,6 +1,5 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_page.dart';
-import 'package:barbershop/app/modules/home/widgets/drawer_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -27,14 +26,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
       return controller.userFirebase != null
-          ? Scaffold(
-              appBar: AppBar(
-                title: Text('Bem Vindo, ${controller.userFirebase!.name}'),
-              ),
-              drawer: const SafeArea(child: DrawerCustom()),
-              body: const InitialPage(),
+          ? const Scaffold(
+              body: InitialPage(),
             )
-          : Container();
+          : Container(
+              color: Theme.of(context).backgroundColor,
+            );
     });
   }
 }
