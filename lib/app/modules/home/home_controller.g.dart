@@ -9,6 +9,36 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeControllerBase, Store {
+  final _$indexAtom = Atom(name: '_HomeControllerBase.index');
+
+  @override
+  int get index {
+    _$indexAtom.reportRead();
+    return super.index;
+  }
+
+  @override
+  set index(int value) {
+    _$indexAtom.reportWrite(value, super.index, () {
+      super.index = value;
+    });
+  }
+
+  final _$pagesAtom = Atom(name: '_HomeControllerBase.pages');
+
+  @override
+  List<Widget?> get pages {
+    _$pagesAtom.reportRead();
+    return super.pages;
+  }
+
+  @override
+  set pages(List<Widget?> value) {
+    _$pagesAtom.reportWrite(value, super.pages, () {
+      super.pages = value;
+    });
+  }
+
   final _$userFirebaseAtom = Atom(name: '_HomeControllerBase.userFirebase');
 
   @override
@@ -41,9 +71,36 @@ mixin _$HomeController on _HomeControllerBase, Store {
     return _$logoutFirebaseAsyncAction.run(() => super.logoutFirebase());
   }
 
+  final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase');
+
+  @override
+  int getIndex() {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.getIndex');
+    try {
+      return super.getIndex();
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setIndex(int? i) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.setIndex');
+    try {
+      return super.setIndex(i);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
+index: ${index},
+pages: ${pages},
 userFirebase: ${userFirebase}
     ''';
   }

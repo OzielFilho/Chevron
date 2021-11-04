@@ -33,6 +33,20 @@ mixin _$InitialController on _InitialControllerBase, Store {
         .run(() => super.getBarbersStoreinFirestore());
   }
 
+  final _$_InitialControllerBaseActionController =
+      ActionController(name: '_InitialControllerBase');
+
+  @override
+  dynamic initPage() {
+    final _$actionInfo = _$_InitialControllerBaseActionController.startAction(
+        name: '_InitialControllerBase.initPage');
+    try {
+      return super.initPage();
+    } finally {
+      _$_InitialControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

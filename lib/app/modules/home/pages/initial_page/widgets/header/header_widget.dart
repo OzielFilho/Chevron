@@ -15,21 +15,21 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: OvalBottomBorderClipper(),
+      clipper: WaveClipperTwo(),
       child: Container(
         color: Theme.of(context).primaryColor,
         width: MediaQuery.of(context).size.width,
-        height: 150,
+        height: 155,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.055),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '- Bem vindo, ${homeController.userFirebase!.name}',
+                    'Bem vindo, ${homeController.userFirebase!.name}',
                     style: Theme.of(context).textTheme.headline2,
                   ),
                   IconButton(
