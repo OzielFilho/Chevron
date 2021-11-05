@@ -1,6 +1,7 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_page.dart';
+import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/barber_page.dart';
 import 'package:barbershop/app/modules/home/pages/scheduling_page/scheduling_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -23,6 +24,6 @@ class HomeModule extends Module {
         ChildRoute('/initial',
             child: (context, _) => const InitialPage(),
             transition: TransitionType.leftToRight,
-            duration: const Duration(milliseconds: 800))
+            duration: const Duration(milliseconds: 800)),
       ];
 }

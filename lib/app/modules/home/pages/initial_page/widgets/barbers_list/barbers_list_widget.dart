@@ -1,4 +1,5 @@
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_controller.dart';
+import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/barber_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -29,7 +30,11 @@ class _BarberListWidgetState extends State<BarberListWidget> {
           ),
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
-              onTap: () {},
+              onTap: () => Modular.to.push(
+                    MaterialPageRoute(
+                      builder: (context) => BarberPage(index: index),
+                    ),
+                  ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
