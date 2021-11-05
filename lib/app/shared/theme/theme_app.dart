@@ -33,7 +33,7 @@ class ThemeApp {
             color: Color(0xff883B35),
             fontWeight: FontWeight.w500),
         headline1: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             color: Color(0xff883B35),
             fontWeight: FontWeight.bold),
         button: TextStyle(

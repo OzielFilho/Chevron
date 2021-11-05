@@ -1,4 +1,5 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
+import 'package:barbershop/app/shared/utils/widgets/buttons/icon_with_text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -30,36 +31,47 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               bottomNavigationBar: ClipPath(
                 clipper: OvalTopBorderClipper(),
                 child: Container(
-                  height: 60,
+                  height: 65,
                   color: Theme.of(context).primaryColor,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      IconButton(
-                          onPressed: () {
-                            setState(() {
-                              controller.setIndex(0);
-                            });
-                          },
-                          icon: Icon(
-                            Icons.home_outlined,
-                            color: controller.getIndex() == 0
-                                ? Colors.white
-                                : Colors.grey[400],
-                          )),
-                      IconButton(
-                        onPressed: () {
+                      IconWithTextCustom(
+                        action: () {
+                          setState(() {
+                            controller.setIndex(0);
+                          });
+                        },
+                        color: controller.getIndex() == 0
+                            ? Colors.white
+                            : Colors.grey[400],
+                        icon: Icon(
+                          Icons.home_outlined,
+                          size: 30,
+                          color: controller.getIndex() == 0
+                              ? Colors.white
+                              : Colors.grey[400],
+                        ),
+                        text: 'Home',
+                      ),
+                      IconWithTextCustom(
+                        action: () {
                           setState(() {
                             controller.setIndex(1);
                           });
                         },
+                        color: controller.getIndex() == 1
+                            ? Colors.white
+                            : Colors.grey[400],
                         icon: Icon(
-                          Icons.list_rounded,
+                          Icons.list,
+                          size: 30,
                           color: controller.getIndex() == 1
                               ? Colors.white
                               : Colors.grey[400],
                         ),
+                        text: 'Solicitações',
                       ),
                     ],
                   ),

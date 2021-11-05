@@ -12,19 +12,27 @@ class HeaderWidget extends StatefulWidget {
 
 class _HeaderWidgetState extends State<HeaderWidget> {
   final homeController = Modular.get<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: WaveClipperTwo(),
+      clipper: OvalBottomBorderClipper(),
       child: Container(
-        color: Theme.of(context).primaryColor,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          image: DecorationImage(
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.5), BlendMode.darken),
+              image: const AssetImage('assets/background.jpg'),
+              fit: BoxFit.cover),
+        ),
         width: MediaQuery.of(context).size.width,
-        height: 155,
+        height: 180,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
