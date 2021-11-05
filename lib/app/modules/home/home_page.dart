@@ -65,13 +65,13 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                             ? Colors.white
                             : Colors.grey[400],
                         icon: Icon(
-                          Icons.list,
+                          Icons.schedule_outlined,
                           size: 30,
                           color: controller.getIndex() == 1
                               ? Colors.white
                               : Colors.grey[400],
                         ),
-                        text: 'Solicitações',
+                        text: 'Agenda',
                       ),
                     ],
                   ),

@@ -1,6 +1,7 @@
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barbers_list/barbers_list_widget.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/widgets/categories_list/categories_list.dart';
+import 'package:barbershop/app/shared/utils/widgets/buttons/text_buttom_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -29,9 +30,18 @@ class _BodyWidgetState extends State<BodyWidget> {
               const SizedBox(
                 height: 15,
               ),
-              Text(
-                'Categorias',
-                style: Theme.of(context).textTheme.headline1,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Categorias',
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
+                  TextButtomCustom(
+                      action: () {},
+                      title: 'Ver mais',
+                      alignment: Alignment.bottomCenter),
+                ],
               ),
               const SizedBox(
                 height: 10,
@@ -40,9 +50,18 @@ class _BodyWidgetState extends State<BodyWidget> {
               const SizedBox(
                 height: 15,
               ),
-              Text(
-                'Barbearias',
-                style: Theme.of(context).textTheme.headline1,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Barbearias',
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
+                  TextButtomCustom(
+                      action: () {},
+                      title: 'Ver mais',
+                      alignment: Alignment.bottomCenter),
+                ],
               ),
               controllerInitial.stores != null
                   ? BarberListWidget(

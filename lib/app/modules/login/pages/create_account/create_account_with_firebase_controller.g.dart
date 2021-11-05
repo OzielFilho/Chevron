@@ -97,7 +97,9 @@ mixin _$CreateAccountWithFirebaseController
 
   @override
   Future<void> createAccountInDataBase(
-      {BuildContext? context, UserFirebase? userFirebase, String? uid}) {
+      {required BuildContext context,
+      UserFirebase? userFirebase,
+      String? uid}) {
     return _$createAccountInDataBaseAsyncAction.run(() => super
         .createAccountInDataBase(
             context: context, userFirebase: userFirebase, uid: uid));

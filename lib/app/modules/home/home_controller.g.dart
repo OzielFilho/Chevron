@@ -9,6 +9,21 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeControllerBase, Store {
+  final _$schedulingsAtom = Atom(name: '_HomeControllerBase.schedulings');
+
+  @override
+  List<dynamic> get schedulings {
+    _$schedulingsAtom.reportRead();
+    return super.schedulings;
+  }
+
+  @override
+  set schedulings(List<dynamic> value) {
+    _$schedulingsAtom.reportWrite(value, super.schedulings, () {
+      super.schedulings = value;
+    });
+  }
+
   final _$indexAtom = Atom(name: '_HomeControllerBase.index');
 
   @override
@@ -52,6 +67,16 @@ mixin _$HomeController on _HomeControllerBase, Store {
     _$userFirebaseAtom.reportWrite(value, super.userFirebase, () {
       super.userFirebase = value;
     });
+  }
+
+  final _$createNewScheduleAsyncAction =
+      AsyncAction('_HomeControllerBase.createNewSchedule');
+
+  @override
+  Future<void> createNewSchedule(
+      {required BuildContext context, Schedule? schedule}) {
+    return _$createNewScheduleAsyncAction.run(
+        () => super.createNewSchedule(context: context, schedule: schedule));
   }
 
   final _$getUserinFirestoreAsyncAction =
@@ -99,6 +124,7 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   String toString() {
     return '''
+schedulings: ${schedulings},
 index: ${index},
 pages: ${pages},
 userFirebase: ${userFirebase}

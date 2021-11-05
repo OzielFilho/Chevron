@@ -44,7 +44,9 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
 
   @action
   Future<void> createAccountInDataBase(
-      {BuildContext? context, UserFirebase? userFirebase, String? uid}) async {
+      {required BuildContext context,
+      UserFirebase? userFirebase,
+      String? uid}) async {
     try {
       await FirebaseFirestore.instance
           .collection('users')
@@ -52,7 +54,7 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
           .set(userFirebase!.toMap());
     } on FirebaseException catch (e) {
       showErrorMessage(
-          context: context!,
+          context: context,
           title: 'Error ao criar o usuário',
           message: e.message!);
     }
@@ -70,9 +72,7 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
       )
           .then((value) {
         UserFirebase userCreate = UserFirebase(
-          name: nameCreate.text,
-          email: value.user!.email!,
-        );
+            name: nameCreate.text, email: value.user!.email!, schedules: []);
         createAccountInDataBase(
                 context: context,
                 uid: value.user!.uid,

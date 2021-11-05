@@ -1,4 +1,8 @@
+import 'package:barbershop/app/modules/home/models/schedule.dart';
+import 'package:barbershop/app/modules/home/pages/scheduling_page/scheduling_page.dart';
 import 'package:barbershop/app/modules/login/pages/models/user_firebase.dart';
+import 'package:barbershop/app/shared/utils/functions/error_msg/error_msg.dart';
+import 'package:barbershop/app/shared/utils/functions/loading/loading_custom.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +16,38 @@ class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
   @observable
+  List schedulings = [];
+
+  @action
+  Future<void> createNewSchedule(
+      {required BuildContext context, Schedule? schedule}) async {
+    showLoading(context: context);
+    try {
+      final User? user = FirebaseAuth.instance.currentUser;
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user!.uid)
+          .update({
+        'schedules': FieldValue.arrayUnion([schedule!.toMap()])
+      }).whenComplete(() {
+        Modular.to.pop(context);
+      });
+    } on FirebaseException catch (e) {
+      Modular.to.pop(context);
+      showErrorMessage(
+          context: context,
+          title: 'Error ao criar um agendamento',
+          message: e.message!);
+    }
+  }
+
+  @observable
   int index = 0;
 
   @observable
   List<Widget?> pages = [
     const InitialPage(),
-    Container(),
+    const SchedulingPage(),
   ];
 
   @action
