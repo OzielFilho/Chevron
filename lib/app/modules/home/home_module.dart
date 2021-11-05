@@ -23,6 +23,6 @@ class HomeModule extends Module {
         ChildRoute('/initial',
             child: (context, _) => const InitialPage(),
             transition: TransitionType.leftToRight,
-            duration: const Duration(milliseconds: 800))
+            duration: const Duration(milliseconds: 800)),
       ];
 }

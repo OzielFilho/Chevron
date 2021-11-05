@@ -23,9 +23,6 @@ class _BodySchedulingState extends State<BodyScheduling> {
       child: Center(
         child: Column(
           children: [
-            SchedulesListWidget(
-              scrollController: widget.scrollController,
-            ),
             MaterialButtomCustom(
               action: () async {
                 await controllerHome
@@ -45,6 +42,9 @@ class _BodySchedulingState extends State<BodyScheduling> {
               },
               alignment: Alignment.center,
               text: 'Criar agendamento',
+            ),
+            SchedulesListWidget(
+              scrollController: widget.scrollController,
             ),
           ],
         ),
