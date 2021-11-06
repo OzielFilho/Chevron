@@ -29,7 +29,7 @@ class ThemeApp {
             color: Color(0xff883B35),
             fontWeight: FontWeight.w500),
         bodyText2: TextStyle(
-            fontSize: 15,
+            fontSize: 17,
             color: Color(0xff883B35),
             fontWeight: FontWeight.w500),
         headline1: TextStyle(

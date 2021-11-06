@@ -1,6 +1,7 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_page.dart';
+import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/barber_page_controller.dart';
 import 'package:barbershop/app/modules/home/pages/scheduling_page/scheduling_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -12,6 +13,7 @@ class HomeModule extends Module {
         Bind((i) => HomeController()),
         Bind((i) => InitialController()),
         Bind((i) => SchedulingController()),
+        Bind((i) => BarberPageController())
       ];
 
   @override
