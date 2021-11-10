@@ -32,8 +32,7 @@ class _ProfessionalsBarberWidgetState extends State<ProfessionalsBarberWidget> {
               child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount:
-                      controllerBarber.generateListProfessionals().length,
+                  itemCount: controllerBarber.professionals.length,
                   itemBuilder: (c, i) {
                     bool professionalClick = false;
                     return InkWell(
@@ -56,15 +55,14 @@ class _ProfessionalsBarberWidgetState extends State<ProfessionalsBarberWidget> {
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
+                                      fit: BoxFit.fill,
                                       colorFilter: professionalClick
                                           ? ColorFilter.mode(
                                               Colors.black.withOpacity(0.4),
                                               BlendMode.darken)
                                           : null,
                                       image: NetworkImage(
-                                        controllerBarber
-                                            .generateListProfessionals()[i]
-                                            .photo,
+                                        controllerBarber.professionals[i].photo,
                                       ),
                                     )),
                               ),
@@ -73,9 +71,7 @@ class _ProfessionalsBarberWidgetState extends State<ProfessionalsBarberWidget> {
                               height: 5,
                             ),
                             Text(
-                              controllerBarber
-                                  .generateListProfessionals()[i]
-                                  .name,
+                              controllerBarber.professionals[i].name,
                               style: Theme.of(context).textTheme.headline3,
                             ),
                             Text(
