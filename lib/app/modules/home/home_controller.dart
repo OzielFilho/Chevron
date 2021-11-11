@@ -20,17 +20,23 @@ abstract class _HomeControllerBase with Store {
 
   @action
   Future<void> createNewSchedule(
-      {required BuildContext context, Schedule? schedule}) async {
+      {required BuildContext context, required Schedule? schedule}) async {
     showLoading(context: context);
+    final User? user = FirebaseAuth.instance.currentUser;
+    var ref = FirebaseFirestore.instance.collection('services').doc(user!.uid);
     try {
-      final User? user = FirebaseAuth.instance.currentUser;
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(user!.uid)
-          .update({
-        'schedules': FieldValue.arrayUnion([schedule!.toMap()])
-      }).whenComplete(() {
-        Modular.to.pop(context);
+      await ref.get().then((value) {
+        if (value.exists) {
+          ref.update({
+            'schedules': FieldValue.arrayUnion([schedule!.toMap()])
+          }).whenComplete(() {
+            Modular.to.pop(context);
+          });
+        } else {
+          ref.set({
+            'schedules': [schedule!.toMap()]
+          }).whenComplete(() => Modular.to.pop(context));
+        }
       });
     } on FirebaseException catch (e) {
       Modular.to.pop(context);

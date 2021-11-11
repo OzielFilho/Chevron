@@ -72,7 +72,9 @@ abstract class _CreateAccountWithFirebaseControllerBase with Store {
       )
           .then((value) {
         UserFirebase userCreate = UserFirebase(
-            name: nameCreate.text, email: value.user!.email!, schedules: []);
+          name: nameCreate.text,
+          email: value.user!.email!,
+        );
         createAccountInDataBase(
                 context: context,
                 uid: value.user!.uid,

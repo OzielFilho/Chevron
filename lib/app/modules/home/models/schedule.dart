@@ -6,12 +6,16 @@ import 'package:barbershop/app/modules/home/models/services_barber.dart';
 class Schedule {
   String? nameStore;
   String? clientName;
+  bool? complete;
   ServiceBarber? service;
   Barbers? barbers;
   String? createAt;
   String? updateAt;
+  int? orderId;
 
   Schedule({
+    this.complete,
+    this.orderId,
     this.nameStore,
     this.clientName,
     this.service,
@@ -22,6 +26,8 @@ class Schedule {
 
   Map<String, dynamic> toMap() {
     return {
+      'complete': complete ?? false,
+      'orderId': orderId ?? 0,
       'nameStore': nameStore,
       'clientName': clientName,
       'service': service?.toMap(),
@@ -33,6 +39,8 @@ class Schedule {
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
+      complete: map['complete'] ?? false,
+      orderId: map['orderId'] ?? 0,
       nameStore: map['nameStore'] ?? '',
       clientName: map['clientName'] ?? '',
       service:

@@ -1,4 +1,6 @@
+import 'package:barbershop/app/modules/home/pages/scheduling_page/scheduling_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'widgets/body/body_scheduling.dart';
 
@@ -9,8 +11,15 @@ class SchedulingPage extends StatefulWidget {
   _SchedulingPageState createState() => _SchedulingPageState();
 }
 
-class _SchedulingPageState extends State<SchedulingPage> {
+class _SchedulingPageState
+    extends ModularState<SchedulingPage, SchedulingController> {
   ScrollController scrollController = ScrollController();
+  @override
+  void initState() {
+    controller.getSchedules(context: context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,7 +35,6 @@ class _SchedulingPageState extends State<SchedulingPage> {
               'Seus Agendamentos',
               style: Theme.of(context).textTheme.headline1,
             ),
-            const Divider(),
             BodyScheduling(
               scrollController: scrollController,
             ),

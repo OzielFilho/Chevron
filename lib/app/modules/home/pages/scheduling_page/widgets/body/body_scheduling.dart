@@ -1,7 +1,5 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
-import 'package:barbershop/app/modules/home/models/schedule.dart';
 import 'package:barbershop/app/modules/home/pages/scheduling_page/widgets/schedules_list/schedules_list.dart';
-import 'package:barbershop/app/shared/utils/widgets/buttons/material_buttom_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -20,34 +18,8 @@ class _BodySchedulingState extends State<BodyScheduling> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       controller: widget.scrollController,
-      child: Center(
-        child: Column(
-          children: [
-            MaterialButtomCustom(
-              action: () async {
-                await controllerHome
-                    .createNewSchedule(
-                        context: context,
-                        schedule: Schedule(
-                            nameStore: 'Barber Shop',
-                            barbers: null,
-                            clientName: 'Juvenal',
-                            createAt: DateTime.now().toString(),
-                            service: null,
-                            updateAt: DateTime.now().toString()))
-                    .whenComplete(() {
-                  controllerHome.getUserinFirestore();
-                  setState(() {});
-                });
-              },
-              alignment: Alignment.center,
-              text: 'Criar agendamento',
-            ),
-            SchedulesListWidget(
-              scrollController: widget.scrollController,
-            ),
-          ],
-        ),
+      child: SchedulesListWidget(
+        scrollController: widget.scrollController,
       ),
     );
   }

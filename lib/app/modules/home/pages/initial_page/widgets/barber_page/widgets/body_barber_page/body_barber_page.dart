@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:barbershop/app/modules/home/home_controller.dart';
 import 'package:barbershop/app/modules/home/models/schedule.dart';
 import 'package:barbershop/app/modules/home/models/services_barber.dart';
@@ -303,6 +305,8 @@ class _BodyBarberPageWidgetState extends State<BodyBarberPageWidget> {
                             .createNewSchedule(
                                 context: context,
                                 schedule: Schedule(
+                                    complete: false,
+                                    orderId: Random().nextInt(200),
                                     updateAt: hours[indexHour].day,
                                     barbers: controllerInitial
                                         .stores!.listBarbers[widget.index],
@@ -315,7 +319,7 @@ class _BodyBarberPageWidgetState extends State<BodyBarberPageWidget> {
                                         .stores!
                                         .listBarbers[widget.index]
                                         .services![indexService]))
-                            .whenComplete(() {
+                            .whenComplete(() async {
                           Navigator.of(context).popUntil((_) => count++ >= 2);
                           controllerHome.getUserinFirestore();
                           setState(() {

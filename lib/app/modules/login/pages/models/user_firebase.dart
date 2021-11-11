@@ -1,14 +1,11 @@
 import 'dart:convert';
 
-import 'package:barbershop/app/modules/home/models/schedule.dart';
-
 class UserFirebase {
   final String name;
   final String email;
   final String? photo;
-  final List<Schedule> schedules;
+
   UserFirebase({
-    required this.schedules,
     required this.name,
     required this.email,
     this.photo,
@@ -19,7 +16,6 @@ class UserFirebase {
       'name': name,
       'email': email,
       'photo': photo,
-      'schedules': schedules.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -28,8 +24,6 @@ class UserFirebase {
       name: map['name'],
       email: map['email'],
       photo: map['photo'] ?? '',
-      schedules: List<Schedule>.from(
-          map['schedules']?.map((x) => Schedule.fromMap(x))),
     );
   }
 

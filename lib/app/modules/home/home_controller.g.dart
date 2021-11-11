@@ -74,7 +74,7 @@ mixin _$HomeController on _HomeControllerBase, Store {
 
   @override
   Future<void> createNewSchedule(
-      {required BuildContext context, Schedule? schedule}) {
+      {required BuildContext context, required Schedule? schedule}) {
     return _$createNewScheduleAsyncAction.run(
         () => super.createNewSchedule(context: context, schedule: schedule));
   }
