@@ -32,4 +32,30 @@ abstract class _SchedulingControllerBase with Store {
       showErrorMessage(context: context!, message: e.message!, title: 'Erro');
     }
   }
+
+  @action
+  Future<void> finalizeSchedule(
+      {BuildContext? context, int? indexSchedule}) async {
+    showLoading(context: context!);
+    final User? user = FirebaseAuth.instance.currentUser;
+    var ref = FirebaseFirestore.instance.collection('services').doc(user!.uid);
+    try {
+      await ref.get().then((value) async {
+        if (value.exists) {
+          await ref.update({
+            'schedules':
+                FieldValue.arrayRemove([schedules[indexSchedule!].toMap()])
+          }).whenComplete(() {
+            Modular.to.pop(context);
+            getSchedules();
+          });
+        } else {
+          throw Exception();
+        }
+      });
+    } on FirebaseException catch (e) {
+      Modular.to.pop(context);
+      showErrorMessage(context: context, message: e.message!, title: 'Erro');
+    }
+  }
 }

@@ -80,7 +80,10 @@ class _SchedulesListWidgetState extends State<SchedulesListWidget> {
                             ],
                           ),
                           MaterialButtomCustom(
-                              action: () {},
+                              action: () {
+                                schedulingController.finalizeSchedule(
+                                    context: context, indexSchedule: i);
+                              },
                               text: 'Finalizar',
                               alignment: Alignment.center)
                         ],
