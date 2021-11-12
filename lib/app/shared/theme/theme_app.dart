@@ -19,6 +19,11 @@ class ThemeApp {
           color: Colors.white,
           fontWeight: FontWeight.w500,
         ),
+        headline4: TextStyle(
+          fontSize: 16,
+          color: Color(0xff883B35),
+          fontWeight: FontWeight.normal,
+        ),
         headline3: TextStyle(
           fontSize: 12,
           color: Color(0xff883B35),

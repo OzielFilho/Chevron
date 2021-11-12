@@ -5,6 +5,7 @@ import 'package:barbershop/app/modules/home/models/schedule.dart';
 import 'package:barbershop/app/modules/home/models/services_barber.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/barber_page_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/models/hours.dart';
+import 'package:barbershop/app/shared/utils/functions/conversions/datetime_in_day.dart';
 import 'package:barbershop/app/shared/utils/widgets/buttons/material_buttom_custom.dart';
 import 'package:barbershop/app/shared/utils/widgets/buttons/text_buttom_custom.dart';
 import 'package:barbershop/app/shared/utils/widgets/modals/popover_modal_custom.dart';
@@ -157,10 +158,18 @@ class _BodyBarberPageWidgetState extends State<BodyBarberPageWidget> {
     int indexProfessional = -1;
     int indexHour = -1;
     int count = 0;
+
     List<Hours> hours = [
-      Hours(day: 'Segunda', hour: '12:00'),
-      Hours(day: 'Quarta', hour: '13:00'),
-      Hours(day: 'Sexta', hour: '10:00'),
+      dateTimeInDay(DateTime.now().add(
+          Duration(days: Random().nextInt(30), hours: Random().nextInt(12)))),
+      dateTimeInDay(DateTime.now().add(
+          Duration(days: Random().nextInt(30), hours: Random().nextInt(12)))),
+      dateTimeInDay(DateTime.now().add(
+          Duration(days: Random().nextInt(30), hours: Random().nextInt(12)))),
+      dateTimeInDay(DateTime.now().add(
+          Duration(days: Random().nextInt(30), hours: Random().nextInt(12)))),
+      dateTimeInDay(DateTime.now().add(
+          Duration(days: Random().nextInt(30), hours: Random().nextInt(12)))),
     ];
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
@@ -307,7 +316,9 @@ class _BodyBarberPageWidgetState extends State<BodyBarberPageWidget> {
                                 schedule: Schedule(
                                     complete: false,
                                     orderId: Random().nextInt(200),
-                                    updateAt: hours[indexHour].day,
+                                    updateAt: hours[indexHour].day +
+                                        ' às ' +
+                                        hours[indexHour].hour,
                                     barbers: controllerInitial
                                         .stores!.listBarbers[widget.index],
                                     clientName:
@@ -319,7 +330,7 @@ class _BodyBarberPageWidgetState extends State<BodyBarberPageWidget> {
                                         .stores!
                                         .listBarbers[widget.index]
                                         .services![indexService]))
-                            .whenComplete(() async {
+                            .whenComplete(() {
                           Navigator.of(context).popUntil((_) => count++ >= 2);
                           controllerHome.getUserinFirestore();
                           setState(() {
