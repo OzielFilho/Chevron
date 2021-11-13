@@ -77,7 +77,5 @@ abstract class _HomeControllerBase with Store {
   }
 
   @action
-  Future<void> logoutFirebase() async => await FirebaseAuth.instance
-      .signOut()
-      .whenComplete(() => Modular.to.pushReplacementNamed('/login/'));
+  Future<void> logoutFirebase() async => await FirebaseAuth.instance.signOut();
 }

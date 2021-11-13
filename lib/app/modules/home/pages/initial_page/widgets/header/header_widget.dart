@@ -41,8 +41,10 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                     style: Theme.of(context).textTheme.headline2,
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.settings_outlined),
+                    onPressed: () async => homeController
+                        .logoutFirebase()
+                        .then((_) => Modular.to.pushReplacementNamed('login')),
+                    icon: const Icon(Icons.logout_outlined),
                     color: Colors.white,
                   ),
                 ],
