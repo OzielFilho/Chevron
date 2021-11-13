@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class CategoriesListWidget extends StatefulWidget {
   const CategoriesListWidget({Key? key}) : super(key: key);
@@ -45,23 +46,28 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         shrinkWrap: true,
-        itemBuilder: (c, i) => Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Column(
-            children: [
-              CircleAvatar(
-                radius: 40,
-                backgroundColor: Theme.of(context).primaryColor,
-                child: categories[i]['icon'],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                categories[i]['name'],
-                style: Theme.of(context).textTheme.headline3,
-              ),
-            ],
+        itemBuilder: (c, i) => InkWell(
+          onTap: () {
+            Modular.to.pushNamed('categories');
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 40,
+                  backgroundColor: Theme.of(context).primaryColor,
+                  child: categories[i]['icon'],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  categories[i]['name'],
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -30,18 +30,9 @@ class _BodyWidgetState extends State<BodyWidget> {
               const SizedBox(
                 height: 15,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Categorias',
-                    style: Theme.of(context).textTheme.headline1,
-                  ),
-                  TextButtomCustom(
-                      action: () {},
-                      title: 'Ver mais',
-                      alignment: Alignment.bottomCenter),
-                ],
+              Text(
+                'Categorias',
+                style: Theme.of(context).textTheme.headline1,
               ),
               const SizedBox(
                 height: 10,
@@ -58,7 +49,9 @@ class _BodyWidgetState extends State<BodyWidget> {
                     style: Theme.of(context).textTheme.headline1,
                   ),
                   TextButtomCustom(
-                      action: () {},
+                      action: () {
+                        Modular.to.pushNamed('categories');
+                      },
                       title: 'Ver mais',
                       alignment: Alignment.bottomCenter),
                 ],

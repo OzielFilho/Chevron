@@ -1,4 +1,5 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
+import 'package:barbershop/app/modules/home/pages/categories_page/categories_page.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/initial_page.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/barber_page_controller.dart';
@@ -24,6 +25,10 @@ class HomeModule extends Module {
             duration: const Duration(milliseconds: 800)),
         ChildRoute('/initial',
             child: (context, _) => const InitialPage(),
+            transition: TransitionType.leftToRight,
+            duration: const Duration(milliseconds: 800)),
+        ChildRoute('/categories',
+            child: (context, _) => const CategoriesPage(),
             transition: TransitionType.leftToRight,
             duration: const Duration(milliseconds: 800)),
       ];
