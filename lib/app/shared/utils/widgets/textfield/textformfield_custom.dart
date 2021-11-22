@@ -6,13 +6,15 @@ class TextFormFieldCustom extends StatelessWidget {
   final Function? action;
   final bool? obscureText;
   final IconData? icon;
+  final Function(String)? onChanged;
   const TextFormFieldCustom(
       {Key? key,
       required this.controllerText,
       required this.title,
       this.action,
       this.icon,
-      this.obscureText})
+      this.obscureText,
+      this.onChanged})
       : super(key: key);
 
   @override
@@ -35,6 +37,7 @@ class TextFormFieldCustom extends StatelessWidget {
           }
         }
       },
+      onFieldSubmitted: onChanged,
       controller: controllerText,
       keyboardType: TextInputType.text,
       obscureText: obscureText ?? false,
