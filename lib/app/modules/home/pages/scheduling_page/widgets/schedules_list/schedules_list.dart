@@ -1,8 +1,8 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
 import 'package:barbershop/app/modules/home/models/schedule.dart';
 import 'package:barbershop/app/modules/home/pages/scheduling_page/scheduling_controller.dart';
-import 'package:barbershop/app/shared/utils/functions/confirme_dialog/confirme_dialog.dart';
-import 'package:barbershop/app/shared/utils/widgets/buttons/material_buttom_custom.dart';
+import 'package:barbershop/app/core/utils/functions/confirme_dialog/confirme_dialog.dart';
+import 'package:barbershop/app/core/utils/widgets/buttons/material_buttom_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';

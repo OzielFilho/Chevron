@@ -1,4 +1,4 @@
-import 'package:barbershop/app/shared/utils/widgets/buttons/text_buttom_custom.dart';
+import 'package:barbershop/app/core/utils/widgets/buttons/text_buttom_custom.dart';
 import 'package:flutter/material.dart';
 
 class OptionsDrawer extends StatefulWidget {

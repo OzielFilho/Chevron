@@ -1,8 +1,8 @@
 import 'package:barbershop/app/modules/home/models/schedule.dart';
 import 'package:barbershop/app/modules/home/pages/scheduling_page/scheduling_page.dart';
 import 'package:barbershop/app/modules/login/pages/models/user_firebase.dart';
-import 'package:barbershop/app/shared/utils/functions/error_msg/error_msg.dart';
-import 'package:barbershop/app/shared/utils/functions/loading/loading_custom.dart';
+import 'package:barbershop/app/core/utils/functions/error_msg/error_msg.dart';
+import 'package:barbershop/app/core/utils/functions/loading/loading_custom.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:barbershop/app/shared/theme/theme_app.dart';
+import 'package:barbershop/app/core/theme/theme_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

@@ -1,5 +1,5 @@
 import 'package:barbershop/app/modules/home/home_controller.dart';
-import 'package:barbershop/app/shared/utils/widgets/buttons/icon_with_text_custom.dart';
+import 'package:barbershop/app/core/utils/widgets/buttons/icon_with_text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

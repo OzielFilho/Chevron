@@ -5,10 +5,10 @@ import 'package:barbershop/app/modules/home/models/schedule.dart';
 import 'package:barbershop/app/modules/home/models/services_barber.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/barber_page_controller.dart';
 import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/models/hours.dart';
-import 'package:barbershop/app/shared/utils/functions/conversions/datetime_in_day.dart';
-import 'package:barbershop/app/shared/utils/widgets/buttons/material_buttom_custom.dart';
-import 'package:barbershop/app/shared/utils/widgets/buttons/text_buttom_custom.dart';
-import 'package:barbershop/app/shared/utils/widgets/modals/popover_modal_custom.dart';
+import 'package:barbershop/app/core/utils/functions/conversions/datetime_in_day.dart';
+import 'package:barbershop/app/core/utils/widgets/buttons/material_buttom_custom.dart';
+import 'package:barbershop/app/core/utils/widgets/buttons/text_buttom_custom.dart';
+import 'package:barbershop/app/core/utils/widgets/modals/popover_modal_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

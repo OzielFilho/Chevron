@@ -5,7 +5,7 @@ import 'package:barbershop/app/modules/home/pages/initial_page/initial_page.dart
 import 'package:barbershop/app/modules/home/pages/initial_page/widgets/barber_page/barber_page_controller.dart';
 import 'package:barbershop/app/modules/home/pages/scheduling_page/scheduling_controller.dart';
 import 'package:barbershop/app/modules/login/login_controller.dart';
-import 'package:barbershop/app/modules/login/login_page.dart';
+import 'package:barbershop/app/modules/login/presentation/pages/login_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'home_page.dart';
